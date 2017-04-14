@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     // UI references.
     private TextView mAccountView;
     private TextView mUserView;
+    private TextView mTokenView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         // Locate References
         mAccountView = (TextView) findViewById(R.id.account_text_view);
         mUserView = (TextView) findViewById(R.id.user_text_view);
+        mTokenView = (TextView) findViewById(R.id.token_text_view);
 
         showAccountInfo();
     }
@@ -61,9 +63,11 @@ public class MainActivity extends AppCompatActivity {
                 + accountManager.getUserData(account, "pass");
 
             mUserView.setText(info);
+            mTokenView.setText(accountManager.getUserData(account, "token"));
         } else {
             mAccountView.setText(R.string.info_no_account);
             mUserView.setText(R.string.info_no_user);
+            mTokenView.setText(R.string.info_no_token);
         }
     }
 
