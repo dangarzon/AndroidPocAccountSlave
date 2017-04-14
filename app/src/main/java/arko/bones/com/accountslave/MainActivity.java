@@ -4,6 +4,8 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +31,19 @@ public class MainActivity extends AppCompatActivity {
         mTokenView = (TextView) findViewById(R.id.token_text_view);
 
         showAccountInfo();
+
+        // Bind token no button to action
+        Button mRefreshButton = (Button) findViewById(R.id.button);
+        mRefreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAccountView.setText("");
+                mUserView.setText("");
+                mTokenView.setText("");
+
+                showAccountInfo();
+            }
+        });
     }
 
     /**
